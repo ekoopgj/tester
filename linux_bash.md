@@ -124,7 +124,7 @@ else
 fi
 
 echo "Hello, this is a test file." > "$FILE_PATH"
-echo "文File content written: $FILE_PATH"
+echo "File content written: $FILE_PATH"
 
 ```
 
