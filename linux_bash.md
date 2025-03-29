@@ -87,3 +87,44 @@ echo "LISTEN: $(netstat -anp | grep LISTEN | wc -l), ESTABLISHED: $(netstat -anp
 LISTEN: 43, ESTABLISHED: 2
 ```
 
+# 使用 bash 实现自动创建目录并生成文件 & 判断目录是否存在
+
+```shell
+#!/bin/bash
+# ========================================================
+# Author: Eric
+# Date: [2025-03-29]
+# Description: This script automatically creates a directory
+#              and generates a file inside it.
+# Applicable System: Linux / macOS
+# Usage:
+#   1. Grant execution permission: chmod +x create_dir_and_file.sh
+#   2. Run the script: ./create_dir_and_file.sh
+# ========================================================
+
+# Set the target directory and file name
+TARGET_DIR="/home/ck305271/test_dir"
+FILE_NAME="example.txt"
+
+# Check if the directory exists, create it if not
+if [ ! -d "$TARGET_DIR" ]; then
+    mkdir -p "$TARGET_DIR"
+    echo "Directory created: $TARGET_DIR"
+else
+    echo "Directory already exists: $TARGET_DIR"
+fi
+
+# Create the file in the directory
+FILE_PATH="$TARGET_DIR/$FILE_NAME"
+if [ ! -f "$FILE_PATH" ]; then
+    touch "$FILE_PATH"
+    echo "File created: $FILE_PATH"
+else
+    echo "File already exists: $FILE_PATH"
+fi
+
+echo "Hello, this is a test file." > "$FILE_PATH"
+echo "文File content written: $FILE_PATH"
+
+```
+
